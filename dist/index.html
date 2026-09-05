@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Redline Design Group outline specification development and handoff tool.">
+  <title>Redline Outline Spec Builder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app" class="app-shell" hidden>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <span class="brand-tile"><img src="assets/redline-mark.jpg" alt="Redline Design Group"></span>
+        <span><strong>Outline Spec Builder</strong><small id="project-subtitle">No project open</small></span>
+      </div>
+      <div class="top-actions">
+        <span class="version-badge">Version 2.0</span>
+        <span id="save-state" class="save-state">Recovery enabled</span>
+        <button id="save-project" class="button" type="button">Save project file</button>
+        <button id="export-open" class="button button-primary" type="button">Export</button>
+      </div>
+    </header>
+
+    <div class="workspace-shell">
+      <aside class="sidebar">
+        <div class="project-identity">
+          <strong id="sidebar-project">Untitled project</strong>
+          <small id="session-user">Session</small>
+        </div>
+        <button id="dashboard-home" class="dashboard-home" type="button" data-view="dashboard" aria-label="Open project dashboard">
+          <span class="dashboard-home-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img"><path d="M4 13h6V4H4v9Zm0 7h6v-5H4v5Zm10 0h6v-9h-6v9Zm0-16v5h6V4h-6Z"/></svg>
+          </span>
+          <span class="dashboard-home-copy"><small>PROJECT HOME</small><strong>Dashboard</strong><span id="dashboard-progress">Outline progress</span></span>
+          <span class="dashboard-home-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="workflow-label">Workflow</div>
+        <nav id="main-nav" aria-label="Project navigation">
+          <button type="button" data-view="setup" class="nav-item is-active">Project setup</button>
+          <button type="button" data-view="manual" class="nav-item">Project manual</button>
+          <button type="button" data-view="sections" class="nav-item">Sections</button>
+          <button type="button" data-view="decisions" class="nav-item">Decision log</button>
+          <button type="button" data-view="library" class="nav-item">Section library</button>
+        </nav>
+        <div class="sidebar-footer">
+          <button id="new-project" class="text-button" type="button">New project</button>
+          <button id="open-project" class="text-button" type="button">Open project file</button>
+          <input id="project-file-input" type="file" accept=".rspec,.json,application/json" hidden>
+        </div>
+      </aside>
+
+      <main id="main-content" class="main-content" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <dialog id="start-dialog" class="dialog start-dialog">
+    <div class="dialog-brand"><img src="assets/redline-mark.jpg" alt=""><span><strong>Redline Design Group</strong><small>Outline Spec Builder</small></span></div>
+    <h1>Start a working session</h1>
+    <p>Create a project or open an existing portable project file. Project information stays in this browser until you explicitly save it.</p>
+    <label class="field"><span>Your name or initials</span><input id="start-user" autocomplete="name" placeholder="GZ"></label>
+    <div class="dialog-actions">
+      <button id="start-open" class="button" type="button">Open project file</button>
+      <button id="start-new" class="button button-primary" type="button">Create new project</button>
+    </div>
+    <button id="recover-project" class="recovery-action" type="button" hidden>Recover the last autosaved project</button>
+    <input id="start-file-input" type="file" accept=".rspec,.json,application/json" hidden>
+  </dialog>
+
+  <dialog id="export-dialog" class="dialog export-dialog">
+    <form method="dialog">
+      <div class="dialog-heading"><div><h2>Generate deliverables</h2><p>All selected sections will be included, including unresolved placeholders.</p></div><button class="icon-button" value="cancel" aria-label="Close export dialog" type="submit">×</button></div>
+    </form>
+    <fieldset class="choice-list">
+      <legend>Deliverables</legend>
+      <label><input type="checkbox" name="deliverable" value="outline" checked> Detailed outline specification</label>
+      <label><input type="checkbox" name="deliverable" value="matrix" checked> Section list and status matrix</label>
+      <label><input type="checkbox" name="deliverable" value="decisions" checked> Unresolved decision log</label>
+      <label><input type="checkbox" name="deliverable" value="handoff" checked> Spec consultant handoff summary</label>
+    </fieldset>
+    <fieldset class="choice-list">
+      <legend>Word packaging</legend>
+      <label><input type="radio" name="package" value="combined" checked> One combined Word document</label>
+      <label><input type="radio" name="package" value="division"> Separate Word document by division</label>
+    </fieldset>
+    <div class="dialog-actions"><button id="export-cancel" class="button" type="button">Cancel</button><button id="export-generate" class="button button-primary" type="button">Generate Word document</button></div>
+  </dialog>
+
+  <dialog id="reference-dialog" class="dialog">
+    <form id="reference-form">
+      <div class="dialog-heading"><div><h2>Add reference</h2><p>Add a note, link, filename, or embed a supporting file.</p></div><button class="icon-button" data-close-dialog type="button" aria-label="Close">×</button></div>
+      <label class="field"><span>Label</span><input name="label" required></label>
+      <label class="field"><span>Notes or URL</span><textarea name="value" rows="3"></textarea></label>
+      <label class="field"><span>Optional embedded file</span><input name="attachment" type="file"><small>Embedded files increase the project-file size.</small></label>
+      <div class="dialog-actions"><button class="button" data-close-dialog type="button">Cancel</button><button class="button button-primary" type="submit">Add reference</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script src="assets/jszip.min.js"></script>
+  <script src="assets/section-library.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
