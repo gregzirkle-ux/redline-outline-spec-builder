@@ -1,49 +1,51 @@
 # Redline Outline Spec Builder
 
-Portable browser-based application for developing architectural outline specifications and structured handoff packages for a final MasterSpec workflow or outside specification consultant.
+A focused browser application for selecting anticipated specification sections, adding optional project-specific direction, and exporting an outline for the project specification writer.
 
-## Use
+## Version 3 workflow
 
-1. Open `dist/index.html` in Microsoft Edge or Google Chrome.
-2. Enter your name or initials and create a project.
-3. Complete the setup questionnaire and manually review the recommended sections against the complete catalog.
-4. Develop each selected section using the hybrid three-part workspace.
-5. Use **Save project file** to download the portable `.rspec` project file into the appropriate project folder.
-6. Use **Export** to create the selected Word handoff deliverables.
+1. Create a project and enter the basic project information.
+2. Select sections from the complete built-in library.
+3. Add detail only to sections where project-specific direction is useful.
+4. Review the Project Outline.
+5. Export a detailed Word outline or a section list.
 
-The browser maintains a local recovery copy, but the `.rspec` file is the durable project record. Only one person should edit a project file at a time.
+Selected sections do not require additional information. A selected section with no detail still appears in the exported outline.
 
-## Sharing through Teams or SharePoint
+## Project files
 
-Upload the complete app folder or packaged ZIP to a shared location. Each user can open the same app locally. Store each `.rspec` file in its project folder and use normal SharePoint checkout or team coordination to avoid simultaneous edits.
+The browser keeps an automatic recovery copy. Use **Save project** to download the durable `.rspec` project file and store it in the appropriate Teams or SharePoint project folder.
 
-## Section libraries
+Version 3 can open Version 2 project files. Existing selected sections and section information are migrated into the simplified fields. Older project data remains in the project file for compatibility even though the Version 3 interface no longer displays the former tracking systems.
 
-The app includes the complete 1,079-entry `Architectural Specification Section Library` supplied for this project. It covers Divisions 00 through 14 and architecturally coordinated portions of Divisions 21 through 33. Every entry remains searchable and selectable whether or not the questionnaire recommends it.
+## Section library
 
-Reusable office guidance and custom sections are maintained separately through **Section library** and may be exported as a portable custom-library file.
+The application includes 1,079 unique entries across 24 divisions. Every entry remains searchable and manually selectable. Custom project sections can be added from the section-selection page.
 
-A licensed section list can be imported as CSV with these columns:
+The section list is an architectural working library and does not reproduce copyrighted MasterSpec guide-specification language.
 
-- `number`
-- `title`
-- `system` (optional plain-language description)
+## Hosting
 
-The application does not reproduce MasterSpec guide-specification language.
+The deployable website is contained in the `dist` directory.
 
-## Project data and attachments
+Vercel settings:
 
-Notes, links, filenames, and embedded reference files can be attached to individual sections. Embedded files are stored inside the `.rspec` file and increase its size.
+- Framework Preset: Other
+- Root Directory: repository root
+- Build Command: none
+- Output Directory: `dist`
+- Install Command: none
+- Environment variables: none
 
 ## Version
 
-Version 2.0.0
+Version 3.0.0
 
-- Full 1,079-section master catalog
-- Search, division, status, recommendation, historic, and custom filters
-- Questionnaire recommendations separated from final selections
-- Historic and adaptive-reuse setup
-- Multiple scope instances within a section
-- Responsibility and consultant-handoff controls
-- Project-file migration that merges existing work into the expanded catalog
-- Dashboard elevated as the primary project-home control
+- Replaced the setup wizard with one project-information screen.
+- Made Project Outline the working project home.
+- Reduced section selection to include, search, division filtering, and optional detail.
+- Removed section statuses, completion rules, recommendations, automatic decisions, and separate Division 00/01 trackers.
+- Replaced the three-part workspace with optional architect-focused fields.
+- Added simplified Division 00 and Division 01 detail forms.
+- Simplified Word export to a detailed outline or section list.
+- Preserved browser recovery, `.rspec` save/open, legacy migration, custom sections, and the 1,079-section library.

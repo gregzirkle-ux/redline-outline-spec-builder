@@ -11,6 +11,7 @@ The repository root should show:
 - `source/`
 - `README.md`
 - `GITHUB_VERCEL_SETUP.md`
+- `GITHUB_VERCEL_UPDATE_STEPS.md`
 
 The `dist` folder is the deployable application. Do not move its files or flatten its `assets` folder.
 
@@ -28,7 +29,7 @@ The `dist` folder is the deployable application. Do not move its files or flatte
 1. Extract the ZIP on your computer.
 2. Open the extracted `Redline_Outline_Spec_Builder` folder.
 3. On the empty GitHub repository page, select **uploading an existing file**.
-4. Drag all five items listed above into the GitHub upload area. Drag the contents of the folder, not the outer folder or ZIP.
+4. Drag all six items listed above into the GitHub upload area. Drag the contents of the folder, not the outer folder or ZIP.
 5. Confirm that GitHub shows files beneath `dist/assets`, `scripts`, and `source`.
 6. Enter `Initial Redline Outline Spec Builder upload` as the commit message.
 7. Select **Commit changes**.
@@ -49,7 +50,7 @@ The `dist` folder is the deployable application. Do not move its files or flatte
 5. No environment variables are required.
 6. Select **Deploy**.
 7. After deployment succeeds, open the generated `.vercel.app` URL.
-8. Confirm that the top bar says **Version 2.0** and the Section Library reports **1,079 master sections**.
+8. Confirm that the top bar says **Version 3.0**. Open **Add Sections** and confirm that the complete section catalog is available.
 
 ## Normal update process
 
